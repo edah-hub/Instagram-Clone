@@ -10,7 +10,7 @@ Chepngetich Edah.
 
 ## Description
 
-This is an attempt rebuild the popular photo gallery website instagram with most of its functionalities using django. 
+This is an application that rebuilds the popular photo gallery website instagram using django framework. 
 
 ## Site 
 
