@@ -3,6 +3,6 @@
 from django.apps import AppConfig
 
 
-class UsersConfig(AppConfig):
+class usersConfig(AppConfig):
     name = 'users'
-    verbose_name = 'Users'
+    verbose_name = 'users'

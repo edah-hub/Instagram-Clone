@@ -10,9 +10,9 @@ Chepngetich Edah.
 
 ## Description
 
-This is an application that rebuilds the popular photo gallery website instagram using django framework. 
+This is an application that rebuilds the popular photo gallery website instagram using django framework.
 
-## Site 
+## Site
 
 View the website <a href="#">Here</a>
 
@@ -28,7 +28,7 @@ View the website <a href="#">Here</a>
 </ul>
 
 ## Prerequisites
-  
+
 <ul>
   <li>Python</li>
   <li>Django</li>
@@ -44,7 +44,6 @@ View the website <a href="#">Here</a>
   <li>Git Version Control</li>
 </ul>
 
-
 ## Setup/Installation Requirements
 
 <h3>Clone the repository below.</h3>
@@ -54,12 +53,12 @@ View the website <a href="#">Here</a>
 <h3>Create a virtual environment and activate it.</h3>
 
 `python -m venv <name-of-environment>`<br>
-`source venv/bin/activate (Linux)`<br> 
+`source venv/bin/activate (Linux)`<br>
 `source venv/Scripts/activate (Windows)`
 
 <h3>Install the requirements.</h3>
 
- `pip install -r requirements.txt.`
+`pip install -r requirements.txt.`
 
 <h3>Create environmental variable file and add database configurations.</h3>
 
@@ -81,5 +80,3 @@ cheruiyotedah@gmail.com
 ## License
 
 The MIT License (MIT) Copyright (c) 2022 Chepngetich Edah.
-
-

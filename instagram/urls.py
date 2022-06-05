@@ -12,7 +12,7 @@ from users import views as users_views
 urlpatterns = [
     # Admin
     path('admin/', admin.site.urls),
-    # Users
+    # users
     path('users/', include(('users.urls', 'users'), namespace='users')),    
     # Posts
     path('', include(('posts.urls', 'posts'), namespace='posts')),
