@@ -9,6 +9,7 @@ django-bootstrap5 = "*"
 pillow = "*"
 psycopg2 = "*"
 sqlparse = "*"
+fontawesomefree = "*"
 
 [dev-packages]
 
