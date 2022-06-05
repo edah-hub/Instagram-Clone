@@ -10,20 +10,20 @@ from django.views.generic import DetailView, FormView, UpdateView
 from django.contrib.auth.models import User
 
 # Forms
-from accounts.forms import SignupForm
+from users.forms import SignupForm
 
 # Models
 from posts.models import Post
-from accounts.models import Profile
+from users.models import Profile
 
 # Create your views here.
 
 
 class SignupView(FormView):
     """Signup View."""
-    template_name = 'accounts/signup.html'
+    template_name = 'users/signup.html'
     form_class = SignupForm
-    success_url = reverse_lazy('accounts:login')
+    success_url = reverse_lazy('users:login')
 
     def form_valid(self, form):
         """If the form is valid save the user"""
@@ -33,7 +33,7 @@ class SignupView(FormView):
 
 class LoginView(auth_views.LoginView):
     """Login view"""
-    template_name = 'accounts/login.html'
+    template_name = 'users/login.html'
     redirect_authenticated_user = True
 
 class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
@@ -41,7 +41,7 @@ class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
 
 class UpdateProfileView(LoginRequiredMixin, UpdateView):
     """Update a user's profile view"""
-    template_name = 'accounts/update_profile.html'
+    template_name = 'users/update_profile.html'
     model = Profile
     fields = ['website', 'biography', 'phone_number', 'picture']
     # Return success url

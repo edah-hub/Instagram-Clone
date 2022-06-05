@@ -1,11 +1,11 @@
-"""accounts URLs."""
+"""Users URLs."""
 
 # Django
 from django.urls import path
 from django.contrib.auth.decorators import login_required
 
 # Views
-from accounts import views
+from users import views
 
 urlpatterns = [
 
