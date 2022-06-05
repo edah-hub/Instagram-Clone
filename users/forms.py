@@ -1,17 +1,9 @@
-
-"""users Forms."""
-
-# Django
 from django import forms
-
-# Models
 from django.contrib.auth.models import User
 from users.models import Profile
 
 class SignupForm(forms.Form):
-    """Signup form"""
 
-    # Por default los valores son requeridos
     username = forms.CharField(
         min_length=5,
         max_length=50,

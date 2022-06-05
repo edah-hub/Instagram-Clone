@@ -2,9 +2,45 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 from users.models import Profile
+from django.urls import reverse
 
 
 
+
+class Image(models.Model):
+  img_name = models.CharField(max_length=100, blank=True)
+  image = CloudinaryField('image')
+  caption = models.CharField(max_length=100, blank=True)
+  likes = models.ManyToManyField(User, related_name='post_likes')
+  user  = models.ForeignKey(User, on_delete=models.CASCADE)
+  created_at = models.DateField(auto_now_add=True)
+  updated_at = models.DateField(auto_now=True)
+
+  def save_image(self):
+    self.save()
+
+  def __str__(self):
+    return f'{self.user.username} Posted Images'
+
+  def get_absolute_url(self):
+    return reverse('image-post-detail', kwargs={'pk': self.pk})
+
+class Comment(models.Model):
+  content = models.CharField(max_length=100)
+  author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_comment")
+  img_post = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='post_comments')
+  created_at = models.DateField(auto_now_add=True)
+
+  class Meta:
+    ordering = ['-created_at']
+  
+  @classmethod
+  def get_comments(cls, pk):
+    comments = cls.objects.filter(image=pk)
+    return comments
+
+  def __str__(self):
+    return self.content
 
 class Post(models.Model):
     """Post Model."""
@@ -24,24 +60,4 @@ class Post(models.Model):
         return "{} by @{}".format(self.title, self.profile.user.username)
 
 
-# class User(models.Model):
-#     """User model."""
 
-#     email = models.EmailField(unique=True)
-#     password = models.CharField(max_length=100)
-
-#     first_name = models.CharField(max_length=100)
-#     last_name = models.CharField(max_length=100)
-
-#     is_admin = models.BooleanField(default=False)
-
-#     bio = models.TextField(blank=True)
-
-#     birthdate = models.DateField(blank=True, null=True)
-
-#     created = models.DateTimeField(auto_now_add=True)
-#     modified = models.DateTimeField(auto_now=True)
-
-#     def __str__(self):
-#         """Return email."""
-#         return self.email
