@@ -26,4 +26,6 @@ urlpatterns = [
         view=login_required(views.PostDetailView.as_view()),
         name='detail'
     ),
+    
+    path('search-results/', views.search, name='image-search')
 ]

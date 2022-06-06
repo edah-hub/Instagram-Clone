@@ -1,4 +1,4 @@
-"""Posts Views"""
+from django.shortcuts import render
 
 # Django
 from django.urls import reverse_lazy
@@ -44,3 +44,15 @@ class PostDetailView(DetailView):
     slug_url_kwarg = 'post_id'
     queryset = Post.objects.all()
     context_object_name = 'post'
+    
+def search(request):
+  template = 'posts/search.html'
+  query = request.GET.get('q') #q is the query variable when users search a webite
+  results = Image.objects.filter(
+    Q(category__cat_name__icontains=query)  
+    )  
+  context ={
+    'results':results,
+    'term':query
+  }
+  return render(request, template, context)
