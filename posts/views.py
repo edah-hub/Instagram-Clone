@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
+from django.db.models import Q
 
 # Django
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy,reverse
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.http import HttpResponse
@@ -47,12 +49,7 @@ class PostDetailView(DetailView):
     
 def search(request):
   template = 'posts/search.html'
-  query = request.GET.get('q') #q is the query variable when users search a webite
-  results = Image.objects.filter(
-    Q(category__cat_name__icontains=query)  
-    )  
-  context ={
-    'results':results,
-    'term':query
-  }
-  return render(request, template, context)
+  query = request.GET.get('q')
+  results = User.objects.filter(Q(username__icontains=query))
+
+  return render(request, template, {'users': results})

@@ -1,12 +1,33 @@
-{% extends "base.html" %} 
+{% extends 'posts/base.html'%}
+{% load static %}
+{% load django_bootstrap5 %}
+
 {% block content %}
-
-<h2>Your search results:</h2>
-
-{% endblock%} {% block container %}
 <div class="container">
   <div class="row">
-    {% for post in posts %} {% include 'posts/post_card.html' %} {% endfor %}
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      {% for user in users %}
+      <ul class="list-unstyled">
+        <li class="card card-body mb-2 mt-4">
+          <div class="media">
+            <img src="{{ user.profile.image.url }}" alt="" class="rounded-circle" height="60" width="60">
+            <div class="media-body">
+              <h4 class="account-heading ml-4"><a  href="{% url 'user_profile'  username=user.username %}">{{ user.username }}</a></h4>
+              {{ user.bio }}
+            </div>
+          </div>
+        </li>
+      </ul>
+    {% endfor %}
   </div>
+  <div class="col-md-3"></div>
 </div>
-{% include 'pagination.html' %} {% endblock %}
+</div>
+
+
+
+
+
+
+{% endblock %}
