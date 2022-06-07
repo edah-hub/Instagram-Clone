@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.db.models import Q
+from users.models import Profile
 
 # Django
 from django.urls import reverse_lazy,reverse
@@ -47,9 +48,20 @@ class PostDetailView(DetailView):
     queryset = Post.objects.all()
     context_object_name = 'post'
     
-def search(request):
-  template = 'posts/search.html'
-  query = request.GET.get('q')
-  results = User.objects.filter(Q(username__icontains=query))
+# def search(request):
+  
+#   query = request.GET.get('q')
+#   results = User.objects.filter(Q(username__icontains=query))
 
-  return render(request, template, {'users': results})
+#   return render(request, 'posts/search.html')
+
+def search_results(request):
+    if 'profile' in request.GET and request.GET["profile"]:
+        name = request.GET.get("profile")
+        searched_profile = Profile.search_by_name(name)
+        print(searched_profile)
+        message = f"{name}"
+        return render(request, 'posts/search.html',{"message":message,"searched_profile": searched_profile})
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'posts/search.html',{"message":message})

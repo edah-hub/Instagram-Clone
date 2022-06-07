@@ -24,6 +24,7 @@ class Profile(models.Model):
     """
     Profile model
     """
+    name = models.CharField(max_length=50,blank=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     website = models.URLField(max_length=200, blank=True)
     biography = models.TextField(blank=True)
@@ -36,3 +37,8 @@ class Profile(models.Model):
     def __str__(self):
      
         return self.user.username
+
+    @classmethod
+    def search_by_name(cls,name):
+        
+        return cls.objects.filter(user__username__icontains=name).all()

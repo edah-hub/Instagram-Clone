@@ -20,6 +20,7 @@ class ProfileAdmin(admin.ModelAdmin):
     list_editable = ('phone_number', 'website', 'picture')
     # Campos en los que se puede buscar
     search_fields = (
+        'user__name', 
         'user__email',
         'user__username',
         'user__first_name',

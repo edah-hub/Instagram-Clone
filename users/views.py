@@ -5,7 +5,7 @@ from django.contrib.auth import logout
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView, FormView, UpdateView
 from django.contrib.auth.models import User
 

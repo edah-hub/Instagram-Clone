@@ -27,5 +27,13 @@ urlpatterns = [
         name='detail'
     ),
     
-    path('find-user/', views.search, name='search_results'),
+    path(
+        route='search/',
+        view= views.search_results,
+        name='search_results'
+    ),
+    
+   
+    
+
 ]

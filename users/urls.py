@@ -37,4 +37,6 @@ urlpatterns = [
         view=login_required(views.UserDetailView.as_view()),
         name='detail'
     ),
+    
+
 ]
