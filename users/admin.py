@@ -12,13 +12,13 @@ from users.models import Profile
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     """Profile Admin"""
-    # Lista de los atributos que mostrara en el admin
+    #List of attributes that will show in the admin
     list_display = ('pk', 'user', 'phone_number', 'website', 'picture')
-    # Lista de links que llevan al detalle
+   #read-only fields
     list_display_links = ('pk', 'user')
-    # Lista de editables in situ
+    #List of editable
     list_editable = ('phone_number', 'website', 'picture')
-    # Campos en los que se puede buscar
+    #search fields
     search_fields = (
         'user__name', 
         'user__email',
@@ -27,26 +27,24 @@ class ProfileAdmin(admin.ModelAdmin):
         'user__last_name',
         'phone_number'
     )
-    # Campos por los que se puede filtrar
+    # Fields you can filter by
     list_filter = (
         'user__is_active',
         'user__is_staff',
         'created',
         'modified',
     )
-    # Agrupar campos
+    # Group fields
     fieldsets = (
         (
             'Profile',
-            {
-                # Para organizarlos horizontalmente se puede hacer
-                # colocando una tupla dentro de otra tupla y la coma
-                # (('user', 'picture'),)
+            {  
                 'fields': (('user', 'picture'),)
             }
         ),
-        # Si no queremos que aparezca
-        # la barra azul de titulo podemos pasarle None
+        #If we don't want it to appear
+       
+        #the blue title bar we can pass None
         (
             'Extra info',
             {
@@ -65,7 +63,8 @@ class ProfileAdmin(admin.ModelAdmin):
     )
     readonly_fields = ('created', 'modified')
 
-# Para que ambos admins se vean en uno solo se hace de la sgte forma
+
+#For both admins to be seen in one, it is done in the following way
 
 
 class ProfileInline(admin.StackedInline):
@@ -88,5 +87,5 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.unregister(User)
-# admin.site.register(Modelo,Clase)
+# admin.site.register(Model,Class)
 admin.site.register(User, UserAdmin)
