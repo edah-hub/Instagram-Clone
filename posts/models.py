@@ -68,6 +68,13 @@ class Post(models.Model):
       Method to save our post
       '''
       self.save()
+      
+      
+      def delete_post(self):
+        '''
+        Method to delete our post
+        '''
+        self.delete()  
 
 
 
