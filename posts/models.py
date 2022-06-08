@@ -61,6 +61,13 @@ class Post(models.Model):
     def __str__(self):
         """Return title and username"""
         return "{} by @{}".format(self.title, self.profile.user.username)
+      
+      
+    def save_post(self):
+      '''
+      Method to save our post
+      '''
+      self.save()
 
 
 
