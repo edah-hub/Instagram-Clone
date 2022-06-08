@@ -18,6 +18,9 @@ class Image(models.Model):
 
   def save_image(self):
     self.save()
+    
+  def delete_image(self):
+    self.delete()  
 
   def __str__(self):
     return f'{self.user.username} Posted Images'
