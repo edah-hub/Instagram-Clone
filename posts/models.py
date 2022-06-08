@@ -71,14 +71,14 @@ class Post(models.Model):
       
     def save_post(self):
       '''
-      Method to save our post
+      Method to save your post
       '''
       self.save()
       
       
-      def delete_post(self):
+    def delete_post(self):
         '''
-        Method to delete our post
+        Method to delete your post
         '''
         self.delete()  
 
