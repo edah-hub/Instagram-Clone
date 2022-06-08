@@ -37,6 +37,12 @@ class Comment(models.Model):
   class Meta:
     ordering = ['-created_at']
   
+    def save_comment(self):
+        self.save()
+
+    def delete_comment(self):
+        self.delete()
+  
   @classmethod
   def get_comments(cls, pk):
     comments = cls.objects.filter(image=pk)
